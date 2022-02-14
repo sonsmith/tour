@@ -93,6 +93,12 @@ header {
   gap: 60px;
 }
 
+.bars {
+  color: var(--light);
+  font-size: 24px;
+  display: none;
+}
+
 /* slide */
 .slide_wrapper {
   position: relative;
@@ -126,17 +132,33 @@ header {
   text-align: center;
 }
 
+.slide_text h1 {
+  animation: scale 0.5s forwards;
+}
+
+.slide_text h2 {
+  animation: fadeUp 0.5s 0.4s forwards;
+  opacity: 0;
+}
+
 .line {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 10px 0;
+  opacity: 0;
+  animation: grow 0.5s 0.8s forwards;
 }
 
 .sun {
   font-size: 1.8rem;
-  margin: 0 10px;
+  margin: 10px 0;
   color: var(--accent);
+}
+
+.slide_text .sun {
+  margin: 0 10px;
+  animation: rotate 0.5s 1s forwards;
 }
 
 .line_left,
@@ -172,6 +194,8 @@ header {
   flex-direction: column;
   align-items: center;
   gap: 18px;
+  opacity: 0;
+  animation: fadeDown 0.5s 1.5s forwards;
 }
 
 .sub_text p {
@@ -232,20 +256,18 @@ header {
 /* banner */
 .banner {
   height: 600px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .banner.item_01 {
-  background-image: url("../images/slide_02.jpg");
 }
 
 .banner.item_02 {
-  background-image: url("../images/slide_03.jpg");
 }
 
 .banner > div {
@@ -269,4 +291,180 @@ footer {
   padding: 70px 0 110px;
   background-color: var(--dark);
   color: var(--light);
+  text-align: center;
+  position: relative;
+}
+
+footer h4 {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+footer .inner {
+  flex-direction: column;
+}
+
+.footer_info {
+  margin-bottom: 60px;
+}
+
+.footer_info .sun {
+  margin: 20px 0 26px;
+}
+
+.footer_info p {
+  width: 50%;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+.footer_extra,
+.social_icons {
+  display: flex;
+}
+
+.footer_extra {
+  justify-content: space-evenly;
+}
+
+.social_icons {
+  font-size: 24px;
+  gap: 36px;
+  margin-top: 35px;
+}
+
+.email form {
+  margin-top: 35px;
+  position: relative;
+}
+
+.email input {
+  width: 256px;
+  height: 35px;
+  border: none;
+  border-radius: 6px;
+  padding: 0 60px 0 20px;
+}
+
+.email_icon {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 24px;
+  color: var(--basic);
+}
+
+.go_top {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  color: #fff;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--dark);
+  z-index: 1;
+  cursor: pointer;
+}
+
+.go_top i {
+  position: relative;
+  top: 35px;
+  opacity: 0;
+  animation: wheel_ani 1.2s infinite;
+}
+
+/* 애니메이션 */
+@keyframes scale {
+  0% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    transform: translateY(4rem);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes grow {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(-360deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes fadeDown {
+  0% {
+    transform: translateY(-3rem);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes wheel_ani {
+  0% {
+    top: 35px;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+
+  .bars {
+    display: block;
+  }
+
+  .slide {
+    height: 80vh;
+  }
+
+  .inner {
+    flex-direction: column;
+  }
+
+  .section .inner > div {
+    width: initial;
+  }
+
+  .travel .photo {
+    order: 2;
+  }
+
+  .travel .info {
+    order: 1;
+  }
+
+  .footer_extra {
+    flex-direction: column;
+  }
 }
